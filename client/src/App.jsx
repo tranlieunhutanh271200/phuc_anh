@@ -19,42 +19,53 @@ function App () {
   return  (
     <Router>
       <Switch>
-      <Route exact path="/">
-            {user?<Home/>:<Redirect to="/login"/>}
-        </Route>
-        <Route path="/login">
-        {!user ? <Login/>:<Redirect to="/"/>}
+        <Route exact path="/">
+          {user ? <Home /> : <Redirect to="/register" />}
         </Route>
         <Route path="/register">
-        {!user ? <Register/>:<Redirect to="/"/>}
+          {!user ? <Register /> : <Redirect to="/" />}
         </Route>
+        <Route path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
+        
         {user && (
           <>
         <Route path="/movies">
-            <Home type="movies"/>
+            <Home />
         </Route>
         <Route path="/series">
-            <Home type="series"/>
+            <Home />
         </Route>
+
+
         <Route path="/watch">
             <Watch/>
         </Route>
+
+
         <Route path="/news">
             <News/>
         </Route>
+
+
         <Route path="/forgot_password">
             <Email/>
         </Route>
+
+
         <Route exact path="/users/activation/:tokenActivation">
             <Login/>
         </Route>
+
+
+
         <Route exact path="/users/reset/:token">
             <Resetpassword/>
            
         </Route>
         
         </>
-            )}
+        )}
+         
       </Switch>
     </Router>
   )

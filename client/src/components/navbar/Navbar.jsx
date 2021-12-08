@@ -47,8 +47,8 @@ const Navbar = () => {
                     <span><Link className="link" to="/series">Series</Link></span>
                     <span><Link className="link" to="/movies">Movies</Link></span>
                     <span><Link className="link" to="/news">New and Popular</Link></span>
-                    <span>Celebrity</span>
-                    <span>Watch List</span>
+                    {/* <span>Celebrity</span>
+                    <span>Watch List</span> */}
 
                     
                 </div>
@@ -56,9 +56,9 @@ const Navbar = () => {
                 <div className="right">
                 {/* <Search className="icon"/> */}
                 <Searchbar/>
-                {userName ?(
+                {/* {userName ?(
                    <React.Fragment>
-                    {/* <span>Phuc Phan</span>
+                    <span>Phuc Phan</span>
                     <Notifications className="icon"/>
                     <img src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/127871159_1685719574939446_539238990743755217_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=GkyY54EVj34AX_7MkXp&_nc_ht=scontent.fsgn2-5.fna&oh=50cc97bcfc61a2c2bec2b5f735df9477&oe=61AFE036" 
                     alt=""/>
@@ -69,15 +69,16 @@ const Navbar = () => {
                             <span onClick={handleLogout}>Logout</span>
                             <span><Link className="link" to="/Login">Sign Up</Link></span>
                         </div>
-                    </div>   */}
+                    </div>  
                     </React.Fragment>  
                  ):(
                      <>
-                     <button className="loginButton"  to="/Login" onClick={() => setIsLogin(true)} >Sign In</button>
+                     <button className="loginButton"><Link style={{ textDecoration: 'none', color: 'white' }} onClick={() => setIsLogin(true)} to="/login">Sign In</Link></button>
+                    
                      </>
-                 )}
+                 )} */}
                 
-               
+                <span><Link className="link" to="/login">Sign Up</Link></span>
                     {/* <Search className="icon"/>
                     <span>Phuc Phan</span>
                     <Notifications className="icon"/>

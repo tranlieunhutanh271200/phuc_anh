@@ -12,6 +12,7 @@ const movieRoute = require("./routes/movieRoute");
 const characterRoute = require("./routes/characterRoute");
 const reviewRoute = require("./routes/reviewRoute");
 const favoriteRoute = require("./routes/favoriteRoute");
+const listRoute = require("./routes/listRoute");
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.use("/api/movies", movieRoute);
 app.use("/api/characters", characterRoute);
 app.use("/api/reviews", reviewRoute);
 app.use("/api/favorites", favoriteRoute);
+app.use("/api/lists", listRoute);
 
 app.listen(8800, () => {
   console.log("Backend server is running!");

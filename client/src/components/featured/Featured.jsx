@@ -1,19 +1,37 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons"
-import { useState } from "react"
+import axios from "axios"
+import { useState , useEffect} from "react"
 import { WatchTrailer } from "../watchTrailer/WatchTrailer"
 import "./featured.scss"
 
-export default function Featured({type}) {
+export default function Featured({type, setGenre}) {
     const [showWatchModal, setShowModalTrailer] = useState(false)
     const openModalTrailer =()=>{
         setShowModalTrailer(prev =>! prev)
     }
+
+    const [content, setContent] = useState({});
+    useEffect(() =>{
+        const getRandomContent = async () =>{
+            try{
+                const res = await axios.get(`/lists/random?type=${type}`);
+                setContent(res.data[0]);
+
+            }catch (err){
+                console.log(err);
+            }
+
+        };
+        getRandomContent();
+
+    }, [type]);
+    console.log(content)
     return (
         <div className="featured">
             {type && (
                 <div className="category">
                     <span>{type === "movies" ? "Movies" : "Series"}</span>
-                         <select name="genre" id="genre">
+                         <select name="genre" id="genre" onChange={(e)=> setGenre(e.target.value)}>
                             <option>Genre</option>
                             <option value="adventure">Adventure</option>
                             <option value="comedy">Comedy</option>
@@ -31,16 +49,16 @@ export default function Featured({type}) {
                          </select>
                     </div>
             )}
-                {/* <img 
-                    src="https://filmdaily.co/wp-content/uploads/2021/09/venommmmm2_03.jpg"
-                    alt=""/> */}
+                <img className ="cover"
+                    src={content.namePic}
+                    alt=""/>
             <div className="info">
                 
                 <img 
-                    src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Venom_Let_There_Be_Carnage_logo.jpg.webp" 
+                    src={content.namePic}
                     alt="" />
                 <span className="description">
-                Eddie Brock attempts to reignite his career by interviewing serial killer Cletus Kasady, who becomes the host of the symbiote Carnage and escapes prison after a failed execution.
+                    {content.desc}
                 </span>
                 <div className="buttons">
                     <button className="play" 
