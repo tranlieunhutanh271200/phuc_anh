@@ -51,6 +51,15 @@
 
      
     }
+    .link{
+      color: white;
+      text-decoration:none ;
+  
+    }
+    .link:hover{
+      text-decoration:none ;
+      color: black;
+    }
 
     .buttons {
       display: flex;
@@ -68,7 +77,7 @@
         cursor: pointer;
 
         &.play {
-          background-color: white;
+          background-color: red;
           color: var(--main-color);
         }
 

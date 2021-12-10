@@ -4,8 +4,14 @@ import List from "../../components/list/List"
 import axios from "axios"
 import "./home.scss"
 import {useState, useEffect} from "react"
-
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux'
+import {dispatchLogin, fetchUser, dispatchGetUser} from '../../redux/actions/authAction'
 const Home = ({type}) => {
+  const dispatch = useDispatch()
+  const token = useSelector(state => state.token)
+  const auth = useSelector(state => state.auth)
+  
     const [lists, setLists] = useState([]);
     const [genre, setGenre] = useState(null);
     useEffect(() =>{
@@ -23,6 +29,33 @@ const Home = ({type}) => {
         };
         getRamdomLists();
     }, [type, genre]);
+
+    useEffect(() => {
+      const firstlogin = localStorage.getItem('firstlogin')
+      if(firstlogin){
+        const getToken = async () => {
+          const res = await axios.post('/users/refresh_token', null)
+          console.log(res)
+          dispatch({type: 'GET_TOKEN', payload: res.data.access_token})
+        }
+        getToken()
+      }
+    },[auth.isLogged, dispatch])
+    useEffect(() => {
+      if(token){
+        const getUser = () => {
+          dispatch(dispatchLogin())
+  
+          return fetchUser(token).then(res => {
+            dispatch(dispatchGetUser(res))
+          })
+        }
+        getUser()
+      }
+    },[token, dispatch])
+
+
+    
     return (
         <div className="home">
             <Navbar/>

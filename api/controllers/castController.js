@@ -85,6 +85,25 @@ exports.find = async (req, res) => {
       res.status(403).json("Only admin can find casts")
     }
   }
+  //FIND
+exports.finds = async (req, res) => {
+  // if(req.userExists.isAdmin){
+    //console.log(req.userExists.isAdmin)
+    try {
+      const findCast = await castService.getById(req.params.id);
+      if(!findCast){
+        res.status(403).json("Cast not found!")
+      }
+      //const { password, ...info } = findUser._doc;
+      res.status(200).json(findCast);
+    }catch(err){
+      res.status(500).json(err);
+    }
+  // }
+  // else{
+  //   res.status(403).json("Only admin can find casts")
+  // }
+}
   
   //GET ALL CATEGORY
   exports.getall = async (req, res) => {

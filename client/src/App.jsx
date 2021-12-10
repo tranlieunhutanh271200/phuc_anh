@@ -12,56 +12,57 @@ import NewDetail from "./pages/newDetail/NewDetail";
 import Navbar from "./components/navbar/Navbar";
 import Email from "./pages/email/email";
 import Resetpassword from "./pages/resetPassword/resetPassword";
-import { Movie } from "@material-ui/icons";
+import { useSelector } from 'react-redux'
+import ProfileScreen from "./components/ProfileScreen/ProfileScreen";
+
 
 function App () {
-  const user = true;
+  const auth = useSelector(state => state.auth)
+  const { isLogged } = auth
   return  (
     <Router>
       <Switch>
-        <Route exact path="/">
-          {user ? <Home /> : <Redirect to="/register" />}
+      <Route exact path="/">
+            <Home/>
         </Route>
+          <Route path="/login" component={isLogged ? Home : Login} exact />
         <Route path="/register">
-          {!user ? <Register /> : <Redirect to="/" />}
+        {!isLogged ? <Register/>:<Redirect to="/"/>}
         </Route>
-        <Route path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
-        
-        {user && (
-          <>
-        <Route path="/movies">
-            <Home />
-        </Route>
-        <Route path="/series">
-            <Home />
-        </Route>
-
-
-        <Route path="/watch">
-            <Watch/>
-        </Route>
-
-
-        <Route path="/news">
-            <News/>
-        </Route>
-
-
         <Route path="/forgot_password">
             <Email/>
         </Route>
-
-
         <Route exact path="/users/activation/:tokenActivation">
             <Login/>
         </Route>
-
-
-
         <Route exact path="/users/reset/:token">
             <Resetpassword/>
            
         </Route>
+        {isLogged && (
+          <>
+        <Route path="/movies" >
+            <Home type ="movies"/>
+        </Route>
+        <Route path="/series" >
+            <Home type ="series"/>
+        </Route>
+        <Route path="/moviedetails" >
+            <MovieDetail/>
+        </Route>
+        <Route path="/profile" >
+            <ProfileScreen/>
+        </Route>
+        <Route path="/watch">
+            <Watch/>
+        </Route>
+       
+       
+
+        <Route path="/News">
+            <News/>
+        </Route>
+        
         
         </>
         )}

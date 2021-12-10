@@ -3,19 +3,23 @@ import axios from "axios"
 import { useState , useEffect} from "react"
 import { WatchTrailer } from "../watchTrailer/WatchTrailer"
 import "./featured.scss"
-
+import {
+    Link
+} from "react-router-dom";
 export default function Featured({type, setGenre}) {
     const [showWatchModal, setShowModalTrailer] = useState(false)
     const openModalTrailer =()=>{
         setShowModalTrailer(prev =>! prev)
     }
-
+   
+   
     const [content, setContent] = useState({});
     useEffect(() =>{
         const getRandomContent = async () =>{
             try{
                 const res = await axios.get(`/lists/random?type=${type}`);
                 setContent(res.data[0]);
+               
 
             }catch (err){
                 console.log(err);
@@ -50,7 +54,7 @@ export default function Featured({type, setGenre}) {
                     </div>
             )}
                 <img className ="cover"
-                    src={content.namePic}
+                    src={content.coverPic}
                     alt=""/>
             <div className="info">
                 
@@ -65,12 +69,12 @@ export default function Featured({type, setGenre}) {
                     // onClick={openModalTrailer}
                     >
                         <PlayArrow/>
-                        <span>Trailer</span>    
+                        <span><Link className="link" to={{pathname: "/watch", movie : content}}>Trailer</Link></span>    
                     </button>
                     
                     <button className="more">
                         <InfoOutlined/>
-                        <span>More</span>
+                        <span><Link className="link" to={{pathname: "/moviedetails", movie : content}}>More</Link></span>    
                     </button>
                 </div>
                 <WatchTrailer showWatchModal={showWatchModal} setShowModalTrailer={setShowModalTrailer} className="watchtrailer"/>

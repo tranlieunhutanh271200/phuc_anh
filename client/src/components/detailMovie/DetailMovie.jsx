@@ -1,13 +1,15 @@
 import "./detailMovie.scss"
 import { DehazeOutlined } from "@material-ui/icons"
 
-export default function DetailMovie() {
+export default function DetailMovie({id}) {
+    console.log(id)
     return (
+        
         <div className="detail">
             <DehazeOutlined className="icons-title"/>
             <span className="detailTitle">Details</span>
             <div className="desc">
-            For the first time in the cinematic history of Spider-Man, our friendly neighborhood hero is unmasked and no longer able to separate his normal life from the high-stakes of being a Super Hero. When he asks for help from Doctor Strange, the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.
+            {id.desc}
             </div>
             <div className="gerneral-gerne">
                 <span className="gerne">Action</span>
@@ -20,12 +22,12 @@ export default function DetailMovie() {
                 <span className="time">Dec 17, 2021</span>
             </div>
             <div className="items">
-                <span className="items-item">Country of origin</span>
-                <span className="country">United States</span>
+                <span className="items-item">Limit</span>
+                <span className="country">+{id.limit}</span>
             </div>
             <div className="items">
                 <span className="items-item">Official sites</span>
-                <span className="site">Disney+</span>
+                <span className="site">{id.site}</span>
             </div>
             <div className="items">
                 <span className="items-item">Language</span>

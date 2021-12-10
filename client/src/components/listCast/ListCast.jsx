@@ -1,22 +1,30 @@
 import { DehazeOutlined } from "@material-ui/icons"
 import Cast from "../cast/Cast"
 import "./listCast.scss"
+import { useRef, useState } from "react"
 
-
-export default function ListCast() {
+export default function ListCast({id}) {
+    
+    console.log(id)
     return (
         <div className="listCast">
             <DehazeOutlined className="icons-title"/>
             <span className="castTitle">Top cast</span>
-            <div className="cast-container">
-             <Cast index={0}/> 
+            <div className="cast-container" >
+            {/* {id.character.map((item, i)=> (
+                         <Cast index={i} item = {item}/>
+                    ))} */}
+                     {id.map((list, i)=>(
+                <Cast index= {i} list={list}/>
+            ))}
+             {/* <Cast index={0}/> 
                 <Cast index={0}/>
                 <Cast index={0}/>
                 <Cast index={0}/>
                 <Cast index={0}/>
                 <Cast index={0}/>
                 <Cast index={0}/>
-                <Cast index={0}/>
+                <Cast index={0}/> */}
             </div>
             <hr  width="80%" size="0.5px" color="red" style={{marginTop: "20px"}} />
             

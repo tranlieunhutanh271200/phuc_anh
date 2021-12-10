@@ -1,0 +1,92 @@
+.profileScreen {
+    height: 100vh;
+    color: white;
+    background-color: black;
+}
+.profileScreen_body{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8%;
+    max-width: 800px;
+}
+.profileScreen_info {
+    display: flex;
+
+}
+.profileScreen_details{
+    color: white;
+    margin-left: 25px;
+    flex: 1;
+}
+.profileScreen_info > h1 {
+    font-size: 60px;
+    font-weight: 400;
+    border-bottom: 1px solid #282c2d;
+    margin-bottom: 40px;
+}
+.line{
+    margin-bottom: 5px;
+  }
+.profileScreen_plans
+{
+    margin-top: 20px;
+}
+.profileScreen_info > img {
+    height: 125px;
+    
+    margin-top: 20px;
+}
+.profileScreen_plans > h3 {
+    border-bottom: 1px solid #282c2d;
+    padding-bottom: 10px;
+}
+.profileScreen_details > h2{
+    background-color: gray;
+    padding: 13px;
+    font-size: 15px;
+    padding-left: 20px;
+    border-bottom: 1px solid #282c2d;
+}
+input {
+    
+    height: 40px;
+    width: 400px;
+    border-radius: 5px;
+    background-color: rgb(116, 116, 116);
+    color: white;
+    padding-left: 10px;
+
+    &::placeholder {
+      color: lightgray;
+    }
+    
+  }
+  span {
+      display: flex;
+    color: lightgray;
+    b {
+      color: white;
+      &:hover{
+        color: red;
+        cursor: pointer;
+      }
+    }
+  }
+
+.profileScreen_signOut {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 0.01%;
+    width: 415px;
+    color: #fff;
+    background-color: #e50914;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+input:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
