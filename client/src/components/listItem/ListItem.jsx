@@ -29,7 +29,7 @@ export default function ListItem({index, item}) {
             onMouseEnter={()=>setIsHovered(true)}
             onMouseLeave={()=>setIsHovered(false)}>
                 <img 
-                src={movie.namePic}
+                src={movie.coverPic}
                 alt="" />
                 {isHovered && (
                 <>

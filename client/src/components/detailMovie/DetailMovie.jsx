@@ -6,7 +6,7 @@ export default function DetailMovie({id}) {
     return (
         
         <div className="detail">
-            <DehazeOutlined className="icons-title"/>
+            {/* <DehazeOutlined className="icons-title"/> */}
             <span className="detailTitle">Details</span>
             <div className="desc">
             {id.desc}
@@ -18,8 +18,8 @@ export default function DetailMovie({id}) {
             </div>
             <div className="gerne-items">
             <div className="items">
-                <span className="items-item">Release Date</span>
-                <span className="time">Dec 17, 2021</span>
+                <span className="items-item">Title</span>
+                <span className="time">{id.title}</span>
             </div>
             <div className="items">
                 <span className="items-item">Limit</span>

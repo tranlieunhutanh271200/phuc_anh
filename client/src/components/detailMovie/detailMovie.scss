@@ -43,16 +43,18 @@
     .gerne-items{
         margin-top: 30px;
         .items{
+            display: flex;
             font-size: 20px;
             margin-top: 10px;
             
             .items-item{
+                
                 color: white;
             }
             
             .time{
                 color: gray;
-                margin-left: 118px;
+                margin-left: 200px;
                 cursor: pointer;
                 &:hover{
                     color: lightgray;
@@ -60,7 +62,7 @@
             }
             .country{
                 color: gray;
-                margin-left: 87px;
+                margin-left: 190px;
                 cursor: pointer;
                 &:hover{
                     color: lightgray;
@@ -76,7 +78,7 @@
             }
             .language{
                 color: gray;
-                margin-left: 146px;
+                margin-left: 150px;
                 cursor: pointer;
                 &:hover{
                     color: lightgray;
@@ -84,7 +86,7 @@
             }
             .company{
                 color: gray;
-                margin-left: 20px;
+                margin-left: 25px;
                 cursor: pointer;
                 &:hover{
                     color: lightgray;

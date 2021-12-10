@@ -18,12 +18,13 @@ export default function Cast({list}) {
         };
         getCharacter();
       }, [list.character]);
-
+  
     return (
+      <div>
+           
 
             <div
             className="cast">
-                
 
                 <img src="https://ss-images.saostar.vn/2019/06/14/5410259/tomholland-gettyimages-982644220-920x584.jpg"
                  alt="" />
@@ -33,6 +34,10 @@ export default function Cast({list}) {
                 <div className="name-cast"></div>
                 
                 <div className="name-charac">{character.name}</div>
+            </div>
+
+
+
             </div>
     )
 }
